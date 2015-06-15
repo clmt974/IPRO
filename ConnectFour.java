@@ -16,8 +16,9 @@ public class ConnectFour extends GameBoard {
     }
     
 	public void InitBoard() {
-		for(int i= 0; i < this.WIDTH;i++){
-			for(int j = 0; j < this.HEIGHT; j++){
+		for(int i= 0; i < WIDTH;i++){
+			for(int j = 0; j < HEIGHT; j++){
+				this.grid[i][j] = new Square();
 				this.grid[i][j].setStatus(Status.EMPTY);
 			}
 		}

@@ -14,6 +14,7 @@ public class BoardGames {
     	
     	board = new ConnectFour(players);  
     	board.grid = new Square[board.WIDTH][board.HEIGHT];
+    	
     	board.InitBoard();
     	System.out.println("ok");
     }

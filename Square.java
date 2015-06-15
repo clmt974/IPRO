@@ -8,7 +8,6 @@ public class Square {
     }
 
     Status getStatus() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.status;
     }
 
