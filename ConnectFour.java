@@ -28,7 +28,6 @@ public class ConnectFour extends GameBoard {
     	String c = "";
     	for(int i= FIRST_COL; i <= LAST_COL;i++){
     		for(int j = FIRST_LINE; j <= LAST_LINE; j++){		
-				if(this.grid[i][j].getStatus() == Status.EMPTY){
 					switch(this.grid[i][j].getStatus()){
 						case EMPTY: c= "|-";break;
 						case PLAYER_ONE:c="|X";break;
@@ -42,7 +41,6 @@ public class ConnectFour extends GameBoard {
 						System.out.println(c+"|");
 				}
 			}
-    	}
     	for(int i= FIRST_COL+1; i < LAST_COL+1;i++){
     		System.out.print("|"+i);
     	}
