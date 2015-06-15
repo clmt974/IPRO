@@ -25,10 +25,21 @@ public class ConnectFour extends GameBoard {
     }
 	
     public void printBoard() {
-    	for(int i= 0; i < WIDTH;i++){
-			for(int j = 0; j < HEIGHT; j++){
+    	String c = "";
+    	for(int i= FIRST_COL; i <= LAST_COL;i++){
+			for(int j = FIRST_LINE; j <= LAST_LINE; j++){
 				if(this.grid[i][j].getStatus() == Status.EMPTY){
-					System.out.println("empty "+i+j);
+					switch(this.grid[i][j].getStatus()){
+						case EMPTY: c= "|-";break;
+						case PLAYER_ONE:c="|X";break;
+						case PLAYER_TWO:c="|0";break;
+						default: break;
+					}
+					
+					if(j < LAST_LINE)
+						System.out.print(c);
+					else
+						System.out.println(c+"|");
 				}
 			}
     	}
