@@ -16,7 +16,8 @@ public class BoardGames {
     	board.grid = new Square[board.WIDTH][board.HEIGHT];
     	
     	board.InitBoard();
-    	System.out.println("ok");
+
+    	board.printBoard();
     }
 
 }

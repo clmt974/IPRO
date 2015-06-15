@@ -23,5 +23,15 @@ public class ConnectFour extends GameBoard {
 			}
 		}
     }
+	
+    public void printBoard() {
+    	for(int i= 0; i < WIDTH;i++){
+			for(int j = 0; j < HEIGHT; j++){
+				if(this.grid[i][j].getStatus() == Status.EMPTY){
+					System.out.println("empty "+i+j);
+				}
+			}
+    	}
+    }
 
 }	
