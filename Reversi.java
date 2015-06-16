@@ -75,7 +75,7 @@ public class Reversi extends GameBoard {
 		else 
     		pStatus = Status.PLAYER_TWO;
 		
-    	i += d.getY();
+    	i += d.getX();
     	j += d.getY();
     	
     	if (grid[i][j].getStatus()  == Status.EMPTY) {
@@ -83,13 +83,13 @@ public class Reversi extends GameBoard {
 		} else if (grid[i][j].getStatus()  == pStatus ) {
 			return false;
 		} else {
-			i += d.getY();
+			i += d.getX();
 	    	j += d.getY();
 			while (FIRST_LINE <= i && i <= LAST_LINE &&
 					FIRST_COL <= j && j <= LAST_COL){
 				if (grid[i][j].getStatus() == pStatus) 
 					return true;
-				i += d.getY();
+				i += d.getX();
 		    	j += d.getY();
 			}		
 		}
@@ -126,6 +126,12 @@ public class Reversi extends GameBoard {
 
 	@Override
 	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean hasWinner() {
 		// TODO Auto-generated method stub
 		return false;
 	}

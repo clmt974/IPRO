@@ -29,4 +29,10 @@ public class FiveOrMore extends GameBoard {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean hasWinner() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

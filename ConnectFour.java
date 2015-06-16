@@ -13,7 +13,6 @@ public class ConnectFour extends GameBoard {
     	//Génération d'un nombre alétoire (0 ou 1) pour choisir le joueur qui commence
     	int num = (int)(Math.random() * 2);
     	setCurrentPlayer(players[num]);
-    	  	
     }
     
 	public void InitBoard() {
@@ -60,8 +59,10 @@ public class ConnectFour extends GameBoard {
 	    	int col = getCurrentPlayer().playConnectFour();
 			if(isValid(col)){
 				placePiece(col-1);
-				nextPlayer();
-				setCurrentPlayer(getCurrentPlayer());
+				if(!hasWinner()){
+					nextPlayer();
+					setCurrentPlayer(getCurrentPlayer());
+				}
 			}
 		}
     	return this.getCurrentPlayer();
@@ -90,5 +91,14 @@ public class ConnectFour extends GameBoard {
 			}
 			i--;
 		}while(i >= FIRST_LINE && isFind == false);
+	}
+
+	@Override
+	public boolean hasWinner() {
+		int nbpion;
+		Direction d;
+		//Verif Horizontal
+		
+		return false;
 	}
 }	
