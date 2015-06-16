@@ -1,10 +1,6 @@
 
 public class ConnectFour extends GameBoard {
 	
-	public boolean isValid(int col) {
-		return false;
-    }
-
     public ConnectFour(Player[] players) {
     	super(players);
     	WIDTH=7;
@@ -13,11 +9,16 @@ public class ConnectFour extends GameBoard {
     	LAST_COL=WIDTH -1;
     	FIRST_LINE=0;
     	LAST_LINE=HEIGHT-1;
+    	grid = new Square[this.HEIGHT][this.WIDTH];
+    	//Génération d'un nombre alétoire (0 ou 1) pour choisir le joueur qui commence
+    	int num = (int)(Math.random() * 2);
+    	setCurrentPlayer(players[num]);
+    	startGame();    	
     }
     
 	public void InitBoard() {
-		for(int i= 0; i < WIDTH;i++){
-			for(int j = 0; j < HEIGHT; j++){
+		for(int i= 0; i < HEIGHT;i++){
+			for(int j = 0; j < WIDTH; j++){
 				this.grid[i][j] = new Square();
 				this.grid[i][j].setStatus(Status.EMPTY);
 			}
@@ -26,8 +27,8 @@ public class ConnectFour extends GameBoard {
 	
     public void printBoard() {
     	String c = "";
-    	for(int i= FIRST_COL; i <= LAST_COL;i++){
-    		for(int j = FIRST_LINE; j <= LAST_LINE; j++){		
+    	for(int i= FIRST_LINE; i <= LAST_LINE;i++){
+    		for(int j = FIRST_COL; j <= LAST_COL; j++){		
 					switch(this.grid[i][j].getStatus()){
 						case EMPTY: c= "|-";break;
 						case PLAYER_ONE:c="|X";break;
@@ -35,16 +36,42 @@ public class ConnectFour extends GameBoard {
 						default: break;
 					}
 					
-					if(j < LAST_LINE)
+					if(j < LAST_COL)
 						System.out.print(c);
 					else
 						System.out.println(c+"|");
 				}
 			}
-    	for(int i= FIRST_COL+1; i < LAST_COL+1;i++){
+    	for(int i= FIRST_COL+1; i <= LAST_COL+1;i++){
     		System.out.print("|"+i);
     	}
-    	System.out.print("|");
+    	System.out.print("|\n");
     }
 
+	public boolean isValid(int col) {
+		return (col > FIRST_COL  && col <= LAST_COL+1);
+    }
+	
+    public Player startGame() {
+    	this.InitBoard();
+    	System.out.println("\n\n" + this.getCurrentPlayer().getName() + " commence!\n");
+    	while(!hasWinner()){
+    		this.printBoard();
+	    	int col = getCurrentPlayer().playConnectFour();
+			if(isValid(col)){
+				nextPlayer();
+				setCurrentPlayer(getCurrentPlayer());
+			}
+		}
+    	return this.getCurrentPlayer();
+    }
+
+	@Override
+	public void nextPlayer() {
+		if(getCurrentPlayer() == getPlayers()[0])
+			setCurrentPlayer(getPlayers()[1]);
+		else
+			setCurrentPlayer(getPlayers()[0]);
+		
+	}
 }	

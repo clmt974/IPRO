@@ -13,11 +13,7 @@ public class BoardGames {
     	players[1] = new Player("joueur2");
     	
     	board = new ConnectFour(players);  
-    	board.grid = new Square[board.WIDTH][board.HEIGHT];
     	
-    	board.InitBoard();
-    	board.grid[3][2].setStatus(Status.PLAYER_ONE);
-    	board.printBoard();
     }
 
 }
