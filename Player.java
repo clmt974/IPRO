@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class Player {
     private String name;
 
@@ -22,7 +23,11 @@ public class Player {
     }
 
     public int playConnectFour() {
-    	return 1;
+    	System.out.println("\n" + this.getName() + " Colonne : ");
+    	Scanner scanner = new Scanner(System.in);
+    	int col = scanner.nextInt();
+    	//scanner.close(); FAIT PLANTER
+    	return col;
     }
     
     public int[] playReversi(){

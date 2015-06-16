@@ -18,13 +18,13 @@ public class Reversi extends GameBoard {
 		initBoard();
 		
 		printBoard();
-		
+		/*
 		t = getCurrentPlayer().playReversi();
 		while( !isValid(t[1], t[0]) ){
 			t = getCurrentPlayer().playReversi();
 			
 		}
-		
+		*/
 		
 		return super.startGame();
 	}
@@ -105,4 +105,9 @@ public class Reversi extends GameBoard {
     	
     	return true;
     }
+
+	@Override
+	public void nextPlayer() {
+		
+	}
 }

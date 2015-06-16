@@ -5,4 +5,22 @@ public class FiveOrMore extends GameBoard {
 		super(p1, p2);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public boolean isValid(int col) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Player startGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void nextPlayer() {
+		// TODO Auto-generated method stub
+		
+	}
 }
