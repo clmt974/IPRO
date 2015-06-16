@@ -38,14 +38,17 @@ public abstract class GameBoard {
 
 	public GameBoard(Player[] players) {
 		this.players = players;
+		this.currentPlayer = players[0];
     }
 
     public GameBoard(Player p1, Player p2) {
     	this.players[0] = p1;
     	this.players[1] = p2;
+		this.currentPlayer = p1;
+
 	}
 
-	public void InitBoard() {
+	public void initBoard() {
     }
 
     Player getCurrentPlayer() {
@@ -58,16 +61,22 @@ public abstract class GameBoard {
         this.currentPlayer = value;
     }
 
-    Player[] getPlayers() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.players;
-    }
 
-    void setPlayers(Player[] value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.players = value;
-    }
+
 
     public abstract boolean isValid(int col);
+
+    public Player[] getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(Player[] players) {
+		this.players = players;
+	}
+
+	public boolean isValid() {
+    	return false;
+    }
+
 
 }

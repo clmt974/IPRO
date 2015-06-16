@@ -23,4 +23,10 @@ public class FiveOrMore extends GameBoard {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
