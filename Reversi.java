@@ -19,29 +19,31 @@ public class Reversi extends GameBoard {
 				this.grid[i][j].setStatus(Status.EMPTY);
 			}
 		}
+		this.grid[3][3].setStatus(Status.PLAYER_TWO);
+		this.grid[3][4].setStatus(Status.PLAYER_ONE);
+		this.grid[4][3].setStatus(Status.PLAYER_ONE);
+		this.grid[4][4].setStatus(Status.PLAYER_TWO);
     }
 	
     public void printBoard() {
-    	String c = "";
-    	for(int i= FIRST_COL; i <= LAST_COL;i++){
-    		for(int j = FIRST_LINE; j <= LAST_LINE; j++){		
-					switch(this.grid[i][j].getStatus()){
-						case EMPTY: c= "|-";break;
-						case PLAYER_ONE:c="|X";break;
-						case PLAYER_TWO:c="|0";break;
-						default: break;
-					}
-					
-					if(j < LAST_LINE)
-						System.out.print(c);
-					else
-						System.out.println(c+"|");
-				}
-			}
     	
-    	for(int i= FIRST_COL+1; i < LAST_COL+1;i++){
+    	System.out.print("    ");
+    	for(int i= FIRST_COL+1; i <= LAST_COL+1;i++){
     		System.out.print("|"+i);
     	}
-    	System.out.print("|");
+    	System.out.println("|");
+    	
+    	for(int i= FIRST_COL; i <= LAST_COL;i++){
+    		System.out.print("|"+(i+1)+"| |");
+    		for(int j = FIRST_LINE; j <= LAST_LINE; j++){		
+					switch(this.grid[i][j].getStatus()){
+						case EMPTY:  System.out.print("-|");break;
+						case PLAYER_ONE: System.out.print("X|");break;
+						case PLAYER_TWO: System.out.print("0|");break;
+						default: break;
+					}					
+				}
+    			System.out.println("");
+			}
     }
 }
