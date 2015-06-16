@@ -21,12 +21,9 @@ public abstract class GameBoard {
     public void printBoard() {
     }
 
-    public void nextPlayer() {
-    }
+    public abstract void nextPlayer() ;
 
-    public Player startGame() {
-    	return currentPlayer;
-    }
+    public abstract Player startGame() ;
 
     public boolean hasWinner() {
     	return false;
@@ -66,6 +63,9 @@ public abstract class GameBoard {
 
 
 
+
+    public abstract boolean isValid(int col);
+
     public Player[] getPlayers() {
 		return players;
 	}
@@ -77,5 +77,6 @@ public abstract class GameBoard {
 	public boolean isValid() {
     	return false;
     }
+
 
 }

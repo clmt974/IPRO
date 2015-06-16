@@ -27,9 +27,8 @@ public class Reversi extends GameBoard {
 			t = getCurrentPlayer().playReversi();
 			
 		}
-		
-		
-		return super.startGame();
+
+		return getCurrentPlayer();
 	}
 	
 	public void initBoard() {
@@ -78,7 +77,7 @@ public class Reversi extends GameBoard {
     		pStatus = Status.PLAYER_TWO;
 		
     	i += d.getY();
-    	j += d.getY();
+    	j += d.getX();
     	
     	if (grid[i][j].getStatus()  == Status.EMPTY) {
 			return false;
@@ -86,13 +85,13 @@ public class Reversi extends GameBoard {
 			return false;
 		} else {
 			i += d.getY();
-	    	j += d.getY();
+	    	j += d.getX();
 			while (FIRST_LINE <= i && i <= LAST_LINE &&
 					FIRST_COL <= j && j <= LAST_COL){
 				if (grid[i][j].getStatus() == pStatus) 
 					return true;
 				i += d.getY();
-		    	j += d.getY();
+		    	j += d.getX();
 			}		
 		}
 		return false;

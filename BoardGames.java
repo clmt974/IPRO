@@ -16,7 +16,8 @@ public class BoardGames {
     	
     
     	board = new ConnectFour(players);  
-    	
+    	board.startGame();  
+ 
     /*
     	board = new Reversi(players[0],players[1]);  
     	*/
