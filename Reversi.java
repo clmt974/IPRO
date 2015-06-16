@@ -12,8 +12,24 @@ public class Reversi extends GameBoard {
     	grid = new Square[HEIGHT][WIDTH];
     	}
 	
+	@Override
+	public Player startGame() {
+		int[] t;
+		initBoard();
+		
+		printBoard();
+		
+		t = getCurrentPlayer().playReversi();
+		while( !isValid(t[1], t[0]) ){
+			t = getCurrentPlayer().playReversi();
+			
+		}
+		
+		
+		return super.startGame();
+	}
 	
-	public void InitBoard() {
+	public void initBoard() {
 		for(int i= 0; i < HEIGHT;i++){
 			for(int j = 0; j < WIDTH; j++){
 				this.grid[i][j] = new Square();
@@ -27,10 +43,10 @@ public class Reversi extends GameBoard {
     }
 	
     public void printBoard() {
-    	
+    	char c = 'A';
     	System.out.print("    ");
     	for(int i= FIRST_COL+1; i <= LAST_COL+1;i++){
-    		System.out.print("|"+i);
+    		System.out.print("|"+(c++));
     	}
     	System.out.println("|");
     	
@@ -48,17 +64,45 @@ public class Reversi extends GameBoard {
 			}
     }
     
-    public boolean isValid(int row, int col) {
-    	int i, j;
-    	for (Direction D : Direction.values()) {
-    		i=row; j=col;
-		while (FIRST_LINE <= i && i <= LAST_LINE &&
-				FIRST_COL <= j && j <= LAST_COL &&
-				grid[i][j].getStatus() != Status.EMPTY) {
-			
+    public boolean isValid(int row, int col, Direction d) {
+    	int i=row, j=col;   		
+    	
+    	Status pStatus;
+    	
+    	if (this.getCurrentPlayer() == getPlayers()[0]) 
+    		pStatus = Status.PLAYER_ONE;
+		else 
+    		pStatus = Status.PLAYER_TWO;
+		
+    	i += d.getY();
+    	j += d.getY();
+    	
+    	if (grid[i][j].getStatus()  == Status.EMPTY) {
+			return false;
+		} else if (grid[i][j].getStatus()  == pStatus ) {
+			return false;
+		} else {
+			i += d.getY();
+	    	j += d.getY();
+			while (FIRST_LINE <= i && i <= LAST_LINE &&
+					FIRST_COL <= j && j <= LAST_COL){
+				if (grid[i][j].getStatus() == pStatus) 
+					return true;
+				i += d.getY();
+		    	j += d.getY();
+			}		
 		}
-		}
-    	return super.isValid();
+		return false;
     }
     
+    public boolean getValidDirections(int row, int col){
+    	
+    	for (Direction d : Direction.values()) {
+			if (isValid(row,col,d)) {
+				
+			}
+		}
+    	
+    	return true;
+    }
 }

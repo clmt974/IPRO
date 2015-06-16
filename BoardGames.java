@@ -5,6 +5,8 @@ public class BoardGames {
     public static GameBoard board;
 
     public Menu menu;
+    
+    public static Direction dir = Direction.HORIZONTAL_LEFT;
 
     public static void main(String[] args) {
 
@@ -17,12 +19,10 @@ public class BoardGames {
     	board.grid = new Square[board.WIDTH][board.HEIGHT];
     	*/
     	
+    
     	board = new Reversi(players[0],players[1]);  
-    	board.grid = new Square[board.WIDTH][board.HEIGHT];
+    	board.startGame();
     	
-    	board.InitBoard();
-    	//board.grid[3][2].setStatus(Status.PLAYER_ONE);
-    	board.printBoard();
     }
 
 }
