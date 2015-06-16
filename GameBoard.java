@@ -25,9 +25,7 @@ public abstract class GameBoard {
 
     public abstract Player startGame() ;
 
-    public boolean hasWinner() {
-    	return false;
-    }
+    public abstract boolean hasWinner();
 
     public GameBoard(Square[][] grid, Player[] players, Player currentPlayer) {
 		super();
@@ -64,7 +62,9 @@ public abstract class GameBoard {
 
 
 
-    public abstract boolean isValid(int col);
+    public  boolean isValid(int col) {
+		return false;
+	}
 
     public Player[] getPlayers() {
 		return players;

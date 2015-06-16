@@ -30,15 +30,17 @@ public class Player {
     	return col;
     }
     
-    public int[] playReversi(){
-    	int[] t = new int[2];
+    public Integer[] playReversi(){
+    	Integer[] t = new Integer[2];
     	Scanner sc = new Scanner(System.in);
     	
     	System.out.println("saisir les coordonnées de la case ou jouer : ");
     	
     	String str = sc.nextLine();
-    	t[0] = (int) str.charAt(0)-16;
-    	t[1] = (int) str.charAt(1)-16;
+    	t[0] = Integer.parseInt(""+((char) (str.charAt(0)-17)));
+    	t[1] = Integer.parseInt(""+((char) (str.charAt(1)-1)));
+    	
+    	System.out.println(""+t[0]+" "+t[1]);
     	
     	return t;
     }
