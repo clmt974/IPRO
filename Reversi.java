@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 
 public class Reversi extends GameBoard {
 
@@ -15,16 +17,17 @@ public class Reversi extends GameBoard {
 	@Override
 	public Player startGame() {
 		int[] t;
+		Stack<Direction> vd = new Stack<Direction>();
 		initBoard();
 		
 		printBoard();
-		/*
+		
 		t = getCurrentPlayer().playReversi();
-		while( !isValid(t[1], t[0]) ){
+		while( (vd=getValidDirections(t[1], t[0])).isEmpty() ){
 			t = getCurrentPlayer().playReversi();
 			
 		}
-		*/
+		
 		
 		return super.startGame();
 	}
@@ -95,15 +98,15 @@ public class Reversi extends GameBoard {
 		return false;
     }
     
-    public boolean getValidDirections(int row, int col){
+    public Stack<Direction> getValidDirections(int row, int col){
+    	Stack<Direction> s = new Stack<Direction>();
     	
     	for (Direction d : Direction.values()) {
 			if (isValid(row,col,d)) {
-				
+				s.push(d);
 			}
 		}
-    	
-    	return true;
+    	return s;
     }
 
 	@Override
