@@ -18,23 +18,31 @@ public class Player {
     	this.name = n;
     }
 
-    public String play() {
-    	return"toto";
-    }
-
     public int playConnectFour() {
     	System.out.println("\n" + this.getName() + " Colonne : ");
+    	int col = 0;
     	Scanner scanner = new Scanner(System.in);
-    	int col = scanner.nextInt();
+    		do
+    		{
+    			String s = scanner.next();
+    	    	try
+    	    	{
+    	    		col = Integer.parseInt(s);
+    	    	}catch(Exception e)
+    	    	{
+    	    		System.out.println("Erreur de saisie,recommencez: ");
+    	    	}
+    		}while(col == 0);
+    		return col;
+    	
     	//scanner.close(); FAIT PLANTER
-    	return col;
     }
     
     public Integer[] playReversi(){
     	Integer[] t = new Integer[2];
     	Scanner sc = new Scanner(System.in);
     	
-    	System.out.println("saisir les coordonnées de la case ou jouer : ");
+    	System.out.println("saisir les coordonnï¿½es de la case ou jouer : ");
     	
     	String str = sc.nextLine();
     	t[0] = Integer.parseInt(""+((char) (str.charAt(0)-17)));
