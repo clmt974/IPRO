@@ -1,4 +1,5 @@
 public class ConnectFour extends GameBoard {
+<<<<<<< HEAD
 
 	public ConnectFour(Player[] players) {
 		super(players);
@@ -15,6 +16,23 @@ public class ConnectFour extends GameBoard {
 		setCurrentPlayer(players[num]);
 	}
 
+=======
+	
+    public ConnectFour(Player[] players) {
+    	super(players);
+    	WIDTH=7;
+    	HEIGHT=6;
+    	FIRST_COL=0;
+    	LAST_COL=WIDTH -1;
+    	FIRST_LINE=0;
+    	LAST_LINE=HEIGHT-1;
+    	grid = new Square[HEIGHT][WIDTH];
+    	//Génération d'un nombre alétoire (0 ou 1) pour choisir le joueur qui commence
+    	int num = (int)(Math.random() * 2);
+    	setCurrentPlayer(players[num]);
+    }
+    
+>>>>>>> 0a7ca3e8a446ddc65cb25006cc12900ce4fe29bd
 	public void InitBoard() {
 		for (int i = 0; i < HEIGHT; i++) {
 			for (int j = 0; j < WIDTH; j++) {

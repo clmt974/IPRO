@@ -12,6 +12,7 @@ public class BoardGames {
 
     public static void main(String[] args) {
 
+<<<<<<< HEAD
     	Menu m = new Menu();
     	m.printMenu();
     	choice = m.getChoice();
@@ -44,6 +45,11 @@ public class BoardGames {
     		System.out.println("Au revoir!");
     		System.exit(0);
     	}
+=======
+    	Player[] players = new Player[2];
+    	players[0] = new Player("joueur1",Status.PLAYER_ONE);
+    	players[1] = new Player("joueur2",Status.PLAYER_TWO);
+>>>>>>> 0a7ca3e8a446ddc65cb25006cc12900ce4fe29bd
     	
     
     	/*board = new Reversi(players[0],players[1]);  

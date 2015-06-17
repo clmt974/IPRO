@@ -35,10 +35,16 @@ public class Reversi extends GameBoard {
 				t = getCurrentPlayer().playReversi();
 			}
 			grid[t[1]][t[0]].setStatus(pStatus);
-			printBoard();
+
+			while (!vd.empty()) {
+				System.out.println(vd.peek());
+				returnPieces(t[1], t[0], vd.pop());
+			}
+
 			nextPlayer();
 		}
 		return getCurrentPlayer();
+		//return getWinner();
 	}
 
 	public void initBoard() {
@@ -84,10 +90,9 @@ public class Reversi extends GameBoard {
 	}
 
 	public boolean isValid(int row, int col, Direction d) {
-		int i = row, j = col;
-
 		Status pStatus;
-
+		int i = row, j = col;
+		
 		if (this.getCurrentPlayer() == getPlayers()[0])
 			pStatus = Status.PLAYER_ONE;
 		else
@@ -130,15 +135,63 @@ public class Reversi extends GameBoard {
 
 	@Override
 	public void nextPlayer() {
-		if(getCurrentPlayer() == getPlayers()[0])
+		if (getCurrentPlayer() == getPlayers()[0])
 			setCurrentPlayer(getPlayers()[1]);
 		else
 			setCurrentPlayer(getPlayers()[0]);
 	}
 
+	public void returnPieces(int row, int col, Direction d) {
+		int i = row, j = col;
+		Status pStatus;
+		
+		if (this.getCurrentPlayer() == getPlayers()[0])
+			pStatus = Status.PLAYER_ONE;
+		else
+			pStatus = Status.PLAYER_TWO;
+		
+		i += d.getY();
+		j += d.getX();
+
+		while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
+				&& j <= LAST_COL
+				&& grid[i][j].getStatus() != pStatus) {
+			grid[i][j].returnPiece();
+			i += d.getY();
+			j += d.getX();
+
+		}
+	}
+
 	@Override
 	public boolean hasWinner() {
 
-		return false;
+		for (int i = 0; i < HEIGHT; i++)
+			for (int j = 0; j < WIDTH; j++)
+				if (grid[i][j].getStatus() == Status.EMPTY)
+					if (getValidDirections(i, j).isEmpty())
+						return false;
+
+		return true;
 	}
+/*
+	public Player getWinner() {
+		int p1 = 0, p2 = 0;
+
+		for (Square squares[] : grid)
+			for (Square square : squares)
+				if (square.getStatus() == Status.PLAYER_ONE)
+					p1++;
+				else if (square.getStatus() == Status.PLAYER_TWO)
+					p2++;
+
+		if (p1 > p2) {
+			return getPlayers()[0];
+		} else if (p2 > p1) {
+			return getPlayers()[1];
+		} else {
+			return null;
+		}
+	}
+*/
 }

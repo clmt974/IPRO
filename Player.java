@@ -3,8 +3,17 @@ import java.util.Scanner;
 
 public class Player {
     private String name;
+    private Status st;
 
-    public String getName() {
+    public Status getSt() {
+		return st;
+	}
+
+	public void setSt(Status st) {
+		this.st = st;
+	}
+
+	public String getName() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.name;
     }
@@ -14,7 +23,7 @@ public class Player {
         this.name = value;
     }
 
-    public Player(String n) {
+    public Player(String n, Status s) {
     	this.name = n;
     }
 
@@ -42,7 +51,11 @@ public class Player {
     	Integer[] t = new Integer[2];
     	Scanner sc = new Scanner(System.in);
     	
+<<<<<<< HEAD
     	System.out.println("saisir les coordonn�es de la case ou jouer : ");
+=======
+    	System.out.println("("+getName()+" X ) > "+ "case : ");
+>>>>>>> 0a7ca3e8a446ddc65cb25006cc12900ce4fe29bd
     	
     	String str = sc.nextLine();
     	t[0] = Integer.parseInt(""+((char) (str.charAt(0)-17)));
