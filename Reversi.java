@@ -40,11 +40,11 @@ public class Reversi extends GameBoard {
 				System.out.println(vd.peek());
 				returnPieces(t[1], t[0], vd.pop());
 			}
-
 			nextPlayer();
 		}
-		return getCurrentPlayer();
-		//return getWinner();
+		printBoard();
+
+		 return getWinner();
 	}
 
 	public void initBoard() {
@@ -90,14 +90,13 @@ public class Reversi extends GameBoard {
 	}
 
 	public boolean isValid(int row, int col, Direction d) {
-		Status pStatus;
+		// Status pStatus;
 		int i = row, j = col;
-		
-		if (this.getCurrentPlayer() == getPlayers()[0])
-			pStatus = Status.PLAYER_ONE;
-		else
-			pStatus = Status.PLAYER_TWO;
-
+		/*
+		 * if (this.getCurrentPlayer() == getPlayers()[0]) pStatus =
+		 * Status.PLAYER_ONE; else pStatus = Status.PLAYER_TWO;
+		 */
+		if(grid[i][j].getStatus() != Status.EMPTY){
 		i += d.getY();
 		j += d.getX();
 
@@ -105,20 +104,21 @@ public class Reversi extends GameBoard {
 				&& j <= LAST_COL)
 			if (grid[i][j].getStatus() == Status.EMPTY) {
 				return false;
-			} else if (grid[i][j].getStatus() == pStatus) {
+			} else if (grid[i][j].getStatus() == getCurrentPlayer().getSt()) {
 				return false;
 			} else {
 				i += d.getY();
 				j += d.getX();
 				while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
 						&& j <= LAST_COL) {
-					if (grid[i][j].getStatus() == pStatus)
+					if (grid[i][j].getStatus() == getCurrentPlayer().getSt())
 						return true;
 					i += d.getY();
 					j += d.getX();
 
 				}
 			}
+		}
 		return false;
 	}
 
@@ -143,19 +143,17 @@ public class Reversi extends GameBoard {
 
 	public void returnPieces(int row, int col, Direction d) {
 		int i = row, j = col;
-		Status pStatus;
-		
-		if (this.getCurrentPlayer() == getPlayers()[0])
-			pStatus = Status.PLAYER_ONE;
-		else
-			pStatus = Status.PLAYER_TWO;
-		
+		/*
+		 * Status pStatus; if (this.getCurrentPlayer() == getPlayers()[0])
+		 * pStatus = Status.PLAYER_ONE; else pStatus = Status.PLAYER_TWO;
+		 */
+
 		i += d.getY();
 		j += d.getX();
 
 		while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
 				&& j <= LAST_COL
-				&& grid[i][j].getStatus() != pStatus) {
+				&& grid[i][j].getStatus() != getCurrentPlayer().getSt()) {
 			grid[i][j].returnPiece();
 			i += d.getY();
 			j += d.getX();
@@ -168,13 +166,21 @@ public class Reversi extends GameBoard {
 
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
-				if (grid[i][j].getStatus() == Status.EMPTY)
-					if (getValidDirections(i, j).isEmpty())
-						return false;
+				if (grid[i][j].getStatus() == Status.EMPTY
+						&& !getValidDirections(i, j).isEmpty())
+					return false;
+		
+		nextPlayer();
 
+		for (int i = 0; i < HEIGHT; i++)
+			for (int j = 0; j < WIDTH; j++)
+				if (grid[i][j].getStatus() == Status.EMPTY
+						&& !getValidDirections(i, j).isEmpty())
+					return false;
+		
 		return true;
 	}
-/*
+
 	public Player getWinner() {
 		int p1 = 0, p2 = 0;
 
@@ -193,5 +199,5 @@ public class Reversi extends GameBoard {
 			return null;
 		}
 	}
-*/
+
 }

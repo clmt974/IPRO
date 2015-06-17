@@ -25,6 +25,7 @@ public class Player {
 
     public Player(String n, Status s) {
     	this.name = n;
+    	this.st = s;
     }
 
     public int playConnectFour() {
@@ -51,11 +52,11 @@ public class Player {
     	Integer[] t = new Integer[2];
     	Scanner sc = new Scanner(System.in);
     	
-<<<<<<< HEAD
-    	System.out.println("saisir les coordonn�es de la case ou jouer : ");
-=======
-    	System.out.println("("+getName()+" X ) > "+ "case : ");
->>>>>>> 0a7ca3e8a446ddc65cb25006cc12900ce4fe29bd
+    	if (getSt() == Status.PLAYER_ONE) 
+        	System.out.println("("+getName()+" X ) > "+ "case : ");
+    	else
+        	System.out.println("("+getName()+" O ) > "+ "case : ");
+				
     	
     	String str = sc.nextLine();
     	t[0] = Integer.parseInt(""+((char) (str.charAt(0)-17)));

@@ -12,11 +12,8 @@ public enum Direction{
 	
 	/* Represente la diagonale '/' */
 	SECOND_DIAG_UP (+1,-1),
-<<<<<<< HEAD
 	SECOND_DIAG_DOWN(-1,+1);
-=======
-	SECOND_DIAG_DOWN(-0,+1);
->>>>>>> 0a7ca3e8a446ddc65cb25006cc12900ce4fe29bd
+
 	
 	private int y,x;
 	
