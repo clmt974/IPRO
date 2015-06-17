@@ -9,7 +9,7 @@ public class ConnectFour extends GameBoard {
     	LAST_COL=WIDTH -1;
     	FIRST_LINE=0;
     	LAST_LINE=HEIGHT-1;
-    	grid = new Square[this.HEIGHT][this.WIDTH];
+    	grid = new Square[HEIGHT][WIDTH];
     	//Génération d'un nombre alétoire (0 ou 1) pour choisir le joueur qui commence
     	int num = (int)(Math.random() * 2);
     	setCurrentPlayer(players[num]);

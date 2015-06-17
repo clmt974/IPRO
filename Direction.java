@@ -8,11 +8,11 @@ public enum Direction{
 	
 	/* Represente la diagonale '\' */
 	FIRST_DIAG_UP (-1,-1),
-	FIRST_DIAG_DONW (+1,+1),
+	FIRST_DIAG_DOWN (+1,+1),
 	
 	/* Represente la diagonale '/' */
 	SECOND_DIAG_UP (+1,-1),
-	SECOND_DIAG_DONW(-0,+1);
+	SECOND_DIAG_DOWN(-0,+1);
 	
 	private int y,x;
 	

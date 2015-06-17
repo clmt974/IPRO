@@ -24,5 +24,13 @@ public class Square {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.piece = value;
     }
+    
+    public void returnPiece() {
+		if (this.getStatus() == Status.PLAYER_ONE) {
+			setStatus(Status.PLAYER_TWO);
+		} else {
+			setStatus(Status.PLAYER_ONE);
+		}
+	}
 
 }

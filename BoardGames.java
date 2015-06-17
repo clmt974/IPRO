@@ -11,8 +11,8 @@ public class BoardGames {
     public static void main(String[] args) {
 
     	Player[] players = new Player[2];
-    	players[0] = new Player("joueur1");
-    	players[1] = new Player("joueur2");
+    	players[0] = new Player("joueur1",Status.PLAYER_ONE);
+    	players[1] = new Player("joueur2",Status.PLAYER_TWO);
     	
     /*
     	board = new ConnectFour(players);  
