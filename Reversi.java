@@ -22,6 +22,7 @@ public class Reversi extends GameBoard {
 		initBoard();
 
 		while (!hasWinner()) {
+			System.out.println("ok");
 
 			if (this.getCurrentPlayer() == getPlayers()[0])
 				pStatus = Status.PLAYER_ONE;
@@ -167,7 +168,7 @@ public class Reversi extends GameBoard {
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
 				if (grid[i][j].getStatus() == Status.EMPTY
-						&& !getValidDirections(i, j).isEmpty())
+						&& getValidDirections(i, j).isEmpty())
 					return false;
 		
 		nextPlayer();
@@ -175,7 +176,7 @@ public class Reversi extends GameBoard {
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
 				if (grid[i][j].getStatus() == Status.EMPTY
-						&& !getValidDirections(i, j).isEmpty())
+						&& getValidDirections(i, j).isEmpty())
 					return false;
 		
 		return true;
