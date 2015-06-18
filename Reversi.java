@@ -38,14 +38,14 @@ public class Reversi extends GameBoard {
 			grid[t[1]][t[0]].setStatus(pStatus);
 
 			while (!vd.empty()) {
-				System.out.println(vd.peek());
+				// System.out.println(vd.peek());
 				returnPieces(t[1], t[0], vd.pop());
 			}
 			nextPlayer();
 		}
 		printBoard();
 
-		 return getWinner();
+		return getWinner();
 	}
 
 	public void initBoard() {
@@ -97,28 +97,28 @@ public class Reversi extends GameBoard {
 		 * if (this.getCurrentPlayer() == getPlayers()[0]) pStatus =
 		 * Status.PLAYER_ONE; else pStatus = Status.PLAYER_TWO;
 		 */
-		if(grid[i][j].getStatus() != Status.EMPTY){
-		i += d.getY();
-		j += d.getX();
+		//if (grid[i][j].getStatus() != Status.EMPTY) {
+			i += d.getY();
+			j += d.getX();
 
-		if (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
-				&& j <= LAST_COL)
-			if (grid[i][j].getStatus() == Status.EMPTY) {
-				return false;
-			} else if (grid[i][j].getStatus() == getCurrentPlayer().getSt()) {
-				return false;
-			} else {
-				i += d.getY();
-				j += d.getX();
-				while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
-						&& j <= LAST_COL) {
-					if (grid[i][j].getStatus() == getCurrentPlayer().getSt())
-						return true;
+			if (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
+					&& j <= LAST_COL)
+				if (grid[i][j].getStatus() == Status.EMPTY) {
+					return false;
+				} else if (grid[i][j].getStatus() == getCurrentPlayer().getSt()) {
+					return false;
+				} else {
 					i += d.getY();
 					j += d.getX();
-
-				}
-			}
+					while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
+							&& j <= LAST_COL) {
+						if (grid[i][j].getStatus() == getCurrentPlayer()
+								.getSt())
+							return true;
+						i += d.getY();
+						j += d.getX();
+					}
+			//	}
 		}
 		return false;
 	}
@@ -164,21 +164,25 @@ public class Reversi extends GameBoard {
 
 	@Override
 	public boolean hasWinner() {
+		//System.out.println("okok");
 
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
 				if (grid[i][j].getStatus() == Status.EMPTY
-						&& getValidDirections(i, j).isEmpty())
+						&& !getValidDirections(i, j).isEmpty()) {
+					//System.out.println(i+"ok1"+j);
 					return false;
-		
+				}
 		nextPlayer();
 
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
 				if (grid[i][j].getStatus() == Status.EMPTY
-						&& getValidDirections(i, j).isEmpty())
+						&& !getValidDirections(i, j).isEmpty()) {
+					System.out.println("ok2");
 					return false;
-		
+				}
+		System.out.println("pas ok");
 		return true;
 	}
 
