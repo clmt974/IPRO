@@ -13,6 +13,20 @@ public class Reversi extends GameBoard {
 		grid = new Square[HEIGHT][WIDTH];
 	}
 
+	
+	public Reversi(Player[] players) {
+		super(players);
+		WIDTH = 8;
+		HEIGHT = 8;
+		FIRST_COL = 0;
+		LAST_COL = WIDTH - 1;
+		FIRST_LINE = 0;
+		LAST_LINE = HEIGHT - 1;
+		grid = new Square[HEIGHT][WIDTH];
+	}
+
+
+
 	@Override
 	public Player startGame() {
 		Status pStatus;
