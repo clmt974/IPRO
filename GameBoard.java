@@ -1,33 +1,23 @@
-
 public abstract class GameBoard {
-    public static int WIDTH;
+	public static int WIDTH;
 
-    public static int HEIGHT;
+	public static int HEIGHT;
 
-    public static int FIRST_COL;
+	public static int FIRST_COL;
 
-    public static int LAST_COL;
+	public static int LAST_COL;
 
-    public static int FIRST_LINE;
+	public static int FIRST_LINE;
 
-    public static int LAST_LINE=HEIGHT;
+	public static int LAST_LINE = HEIGHT;
 
-    public Square[][] grid;
+	public Square[][] grid;
 
-    private Player[] players = new Player[2];
+	private Player[] players = new Player[2];
 
-    private Player currentPlayer;
+	private Player currentPlayer;
 
-    public void printBoard() {
-    }
-
-    public abstract void nextPlayer() ;
-
-    public abstract Player startGame() ;
-
-    public abstract boolean hasWinner();
-
-    public GameBoard(Square[][] grid, Player[] players, Player currentPlayer) {
+	public GameBoard(Square[][] grid, Player[] players, Player currentPlayer) {
 		super();
 		this.grid = grid;
 		this.players = players;
@@ -37,47 +27,48 @@ public abstract class GameBoard {
 	public GameBoard(Player[] players) {
 		this.players = players;
 		this.currentPlayer = players[0];
-    }
+	}
 
-    public GameBoard(Player p1, Player p2) {
-    	this.players[0] = p1;
-    	this.players[1] = p2;
+	public GameBoard(Player p1, Player p2) {
+		this.players[0] = p1;
+		this.players[1] = p2;
 		this.currentPlayer = p1;
 
 	}
 
-	public void initBoard() {
-    }
+	public abstract Player startGame();
 
-    Player getCurrentPlayer() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.currentPlayer;
-    }
+	public abstract void printBoard();
 
-    void setCurrentPlayer(Player value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.currentPlayer = value;
-    }
+	public abstract boolean isValid();
 
+	public abstract boolean hasWinner();
+	
+	public abstract Player getWinner();
 
+	public abstract void initBoard();
 
-
-    public  boolean isValid(int col) {
-		return false;
+	public void nextPlayer() {
+		if (getCurrentPlayer() == getPlayers()[0])
+			setCurrentPlayer(getPlayers()[1]);
+		else
+			setCurrentPlayer(getPlayers()[0]);
 	}
 
-    public Player[] getPlayers() {
+	public Player getCurrentPlayer() {
+		return this.currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player value) {
+		this.currentPlayer = value;
+	}
+
+	public Player[] getPlayers() {
 		return players;
 	}
 
 	public void setPlayers(Player[] players) {
 		this.players = players;
 	}
-
-	public boolean isValid() {
-    	return false;
-    }
-
-
 
 }

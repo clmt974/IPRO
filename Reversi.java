@@ -13,7 +13,6 @@ public class Reversi extends GameBoard {
 		grid = new Square[HEIGHT][WIDTH];
 	}
 
-	
 	public Reversi(Player[] players) {
 		super(players);
 		WIDTH = 8;
@@ -24,8 +23,6 @@ public class Reversi extends GameBoard {
 		LAST_LINE = HEIGHT - 1;
 		grid = new Square[HEIGHT][WIDTH];
 	}
-
-
 
 	@Override
 	public Player startGame() {
@@ -111,29 +108,28 @@ public class Reversi extends GameBoard {
 		 * if (this.getCurrentPlayer() == getPlayers()[0]) pStatus =
 		 * Status.PLAYER_ONE; else pStatus = Status.PLAYER_TWO;
 		 */
-		//if (grid[i][j].getStatus() != Status.EMPTY) {
-			i += d.getY();
-			j += d.getX();
+		// if (grid[i][j].getStatus() != Status.EMPTY) {
+		i += d.getY();
+		j += d.getX();
 
-			if (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
-					&& j <= LAST_COL)
-				if (grid[i][j].getStatus() == Status.EMPTY) {
-					return false;
-				} else if (grid[i][j].getStatus() == getCurrentPlayer().getSt()) {
-					return false;
-				} else {
+		if (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
+				&& j <= LAST_COL)
+			if (grid[i][j].getStatus() == Status.EMPTY) {
+				return false;
+			} else if (grid[i][j].getStatus() == getCurrentPlayer().getSt()) {
+				return false;
+			} else {
+				i += d.getY();
+				j += d.getX();
+				while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
+						&& j <= LAST_COL) {
+					if (grid[i][j].getStatus() == getCurrentPlayer().getSt())
+						return true;
 					i += d.getY();
 					j += d.getX();
-					while (FIRST_LINE <= i && i <= LAST_LINE && FIRST_COL <= j
-							&& j <= LAST_COL) {
-						if (grid[i][j].getStatus() == getCurrentPlayer()
-								.getSt())
-							return true;
-						i += d.getY();
-						j += d.getX();
-					}
-			//	}
-		}
+				}
+				// }
+			}
 		return false;
 	}
 
@@ -146,14 +142,6 @@ public class Reversi extends GameBoard {
 			}
 		}
 		return s;
-	}
-
-	@Override
-	public void nextPlayer() {
-		if (getCurrentPlayer() == getPlayers()[0])
-			setCurrentPlayer(getPlayers()[1]);
-		else
-			setCurrentPlayer(getPlayers()[0]);
 	}
 
 	public void returnPieces(int row, int col, Direction d) {
@@ -178,13 +166,13 @@ public class Reversi extends GameBoard {
 
 	@Override
 	public boolean hasWinner() {
-		//System.out.println("okok");
+		// System.out.println("okok");
 
 		for (int i = 0; i < HEIGHT; i++)
 			for (int j = 0; j < WIDTH; j++)
 				if (grid[i][j].getStatus() == Status.EMPTY
 						&& !getValidDirections(i, j).isEmpty()) {
-					//System.out.println(i+"ok1"+j);
+					// System.out.println(i+"ok1"+j);
 					return false;
 				}
 		nextPlayer();
@@ -219,4 +207,7 @@ public class Reversi extends GameBoard {
 		}
 	}
 
+	public boolean isValid(){
+		return true;
+	}
 }
