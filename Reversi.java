@@ -207,7 +207,11 @@ public class Reversi extends GameBoard {
 		}
 	}
 
-	public boolean isValid(){
-		return true;
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
+
+	
 }

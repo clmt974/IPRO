@@ -5,11 +5,11 @@ public class Square {
     public Square(){
     }
 
-    Status getStatus() {
+    public Status getStatus() {
         return this.status;
     }
 
-    void setStatus(Status value) {
+    public void setStatus(Status value) {
         this.status = value;
     }
    

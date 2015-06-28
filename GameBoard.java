@@ -38,15 +38,15 @@ public abstract class GameBoard {
 
 	public abstract Player startGame();
 
+	public abstract void initBoard();
+
 	public abstract void printBoard();
 
 	public abstract boolean isValid();
 
 	public abstract boolean hasWinner();
-	
-	public abstract Player getWinner();
 
-	public abstract void initBoard();
+	public abstract Player getWinner();
 
 	public void nextPlayer() {
 		if (getCurrentPlayer() == getPlayers()[0])
@@ -55,20 +55,20 @@ public abstract class GameBoard {
 			setCurrentPlayer(getPlayers()[0]);
 	}
 
-	public Player getCurrentPlayer() {
-		return this.currentPlayer;
-	}
-
-	public void setCurrentPlayer(Player value) {
-		this.currentPlayer = value;
-	}
-
 	public Player[] getPlayers() {
 		return players;
 	}
 
 	public void setPlayers(Player[] players) {
 		this.players = players;
+	}
+
+	public Player getCurrentPlayer() {
+		return this.currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player value) {
+		this.currentPlayer = value;
 	}
 
 }

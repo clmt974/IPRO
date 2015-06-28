@@ -2,31 +2,11 @@ import java.util.Scanner;
 
 public class Player {
 	private String name;
-	private Status st;
-
-	public Status getSt() {
-		return st;
-	}
-
-	public void setSt(Status st) {
-		this.st = st;
-	}
-
-	public String getName() {
-		// Automatically generated method. Please delete this comment before
-		// entering specific code.
-		return this.name;
-	}
-
-	public void setName(String value) {
-		// Automatically generated method. Please delete this comment before
-		// entering specific code.
-		this.name = value;
-	}
+	private Status status;
 
 	public Player(String n, Status s) {
 		this.name = n;
-		this.st = s;
+		this.status = s;
 	}
 
 	public int playConnectFour() {
@@ -42,7 +22,7 @@ public class Player {
 			}
 		} while (col == 0);
 		return col;
-
+	
 		// scanner.close(); FAIT PLANTER
 	}
 
@@ -75,9 +55,29 @@ public class Player {
 				System.out.println("Erreur de saisie,recommencez: ");
 			}
 
-		//	System.out.println("" + t[0] + " " + t[1]);
+			// System.out.println("" + t[0] + " " + t[1]);
 		}
 		return t;
+	}
+
+	public String getName() {
+		// Automatically generated method. Please delete this comment before
+		// entering specific code.
+		return this.name;
+	}
+
+	public void setName(String value) {
+		// Automatically generated method. Please delete this comment before
+		// entering specific code.
+		this.name = value;
+	}
+
+	public Status getSt() {
+		return status;
+	}
+
+	public void setSt(Status st) {
+		this.status = st;
 	}
 
 }
