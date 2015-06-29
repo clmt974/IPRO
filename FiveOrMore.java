@@ -7,12 +7,6 @@ public class FiveOrMore extends GameBoard {
 	}
 
 	@Override
-	public boolean isValid(int col) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public Player startGame() {
 		// TODO Auto-generated method stub
 		return null;
@@ -34,5 +28,23 @@ public class FiveOrMore extends GameBoard {
 	public boolean hasWinner() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void initBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Player getWinner() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
